@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+    int arr[100000];
+    int i, j;
+
+    scanf("%d", &n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    if (n == 0) return 0;
+
+    j = 0;  // index of last unique element
+    for (i = 1; i < n; i++) {
+        if (arr[i] != arr[j]) {
+            j++;
+            arr[j] = arr[i];
+        }
+    }
+
+    // now unique elements are in arr[0..j]
+    for (i = 0; i <= j; i++) {
+        printf("%d", arr[i]);
+        if (i < j) printf(" ");
+    }
+    printf("\n");
+
+    return 0;
+}
